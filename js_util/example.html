@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Example of how to use serialize(); function</title>
+	<script language="javascript" type="text/javascript" src="serialize.js"></script>
+	<script language="javascript" type="text/javascript">
+		
+		/*
+		 * Some simple objects and arrays for serialization example
+		 */
+		
+		// A object that contains personal info about a single person
+		var person = {
+			name: "Andre",
+			last: "Valongueiro",
+			country: "Brazil",
+			blog: "www.valongueiro.blog.br"
+		}
+		
+		// Alert personal info as a serialized string
+		function serializePerson() {
+			var serializedData = serialize(person);	
+			alert(serializedData);
+		}
+		
+		/*
+		 *  An array of objects with multiple values
+		 *  
+		 * 	In this case serialize(); assumes that you pass as a paramenter an array containing objects with two default values:
+		 *  'name' and 'value'   
+		 */
+		var arrayPeopleNames = [
+			{name: "name", value: "Andre"},
+			{name: "last", value: "Valongueiro"},
+			{name: "programming", value: "JavaScript"},
+			{name: "country", value: "Brazil"},
+			{name: "blog", value: "www.valongueiro.blog.br"}	
+		]
+		
+		function serializeMultipleData() {
+			var serializedData = serialize(arrayPeopleNames);
+			alert(serializedData);
+		}
+		
+		/*
+		 * An array of id values as strings
+		 * 
+		 * In this case you should pass an array with some input id's and seralize(); will return a serialized string containing the
+		 * name and values attributes of your inputs
+		 */
+
+		function id(elementId) { return document.getElementById(elementId); }			
+		
+		function serializeInputs() {
+			// An array of input id's
+			var arrayInputIds = [
+				id("input_1"),
+				id("input_2"),
+				id("input_3"),
+				id("input_4"),
+				id("input_5")
+			]
+			
+			var serializedData = serialize(arrayInputIds);
+			alert(serializedData);
+		}
+	
+		
+		
+	</script>
+</head>
+<body>
+
+<h2>Example #1 | Serializing a simple JavaScript object</h2>
+
+<pre>
+// A object that contains personal info about a single person
+var person = {
+	name: "Andre",
+	last: "Valongueiro",
+	country: "Brazil",
+	blog: "www.valongueiro.blog.br"
+}
+</pre>
+
+<a href="#" onclick="serializePerson();">Serialize person object</a>
+
+<h2>Example #2 | Serializing and array that contains several objects</h2>
+
+<pre>
+/*
+ *  An array of objects with multiple values
+ *  
+ * 	In this case serialize(); assumes that you pass as a paramenter an array containing objects with two default values:
+ *  'name' and 'value'   
+ */
+var arrayPeopleNames = [
+	{name: "name", value: "Andre"},
+	{name: "last", value: "Valongueiro"},
+	{name: "programming", value: "JavaScript"},
+	{name: "country", value: "Brazil"},
+	{name: "blog", value: "www.valongueiro.blog.br"}	
+]
+</pre>
+
+<a href="#" onclick="serializeMultipleData();">Serialize arrayPeopleNames object</a>
+
+<h3>Example #3 | Serializing somes input elements</h3>
+
+<input id="input_1" name="input_1" value="input_1_value" />
+<input id="input_2" name="input_2" value="input_2_value" />
+<input id="input_3" name="input_3" value="input_3_value" />
+<input id="input_4" name="input_4" value="input_4_value" />
+<input id="input_5" name="input_5" value="input_5_value" />
+
+<pre>
+// An array containing the id's of the inputs above
+var arrayInputIds = [
+	id("input_1"),
+	id("input_2"),
+	id("input_3"),
+	id("input_4"),
+	id("input_5")
+]
+</pre>
+
+<a href="#" onclick="serializeInputs();">Serialize input id's array</a>
+
+</body>
+</html>
